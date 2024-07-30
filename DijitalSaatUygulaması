@@ -1,0 +1,23 @@
+import tkinter as tk #Kullanılan  Kütüphaneler
+import time # Zaman İçin
+
+#Pencere Açmak İçin:
+form = tk.Tk() 
+form.title("Dijital Saat Uygulaması")
+form.geometry("250x200+500+250")
+form.config(bg="black")
+
+#Zaman İçin
+def zaman():
+    saat = time.strftime("%H:%M:%S") # Saat, Dakika, Saniye Olması İçin
+    saat_label.config(text=saat) 
+    saat_label.after(200, zaman) # Düzenli Olarak Saniyeyi Değiştimek için Burda ki Sayı değiştirilirse daha uzun ve daha kısa şekilde saniyesi artar.
+
+#Pencereye Yazdırmak İçin
+saat_label = tk.Label(bg="white",font="times 12 bold",height=3,width=7) #Saatin Özellikleri
+saat_label.place(x=90,y=80) # Saatin Konumu
+
+# Pencerede Gözükmesi İçin
+zaman()
+
+form.mainloop()
